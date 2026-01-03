@@ -5,6 +5,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import ProblemSection from "@/components/sections/ProblemSection";
 import RootCauseSection from "@/components/sections/RootCauseSection";
 import ExpertSection from "@/components/sections/ExpertSection";
+import YouTubeSection from "@/components/sections/YouTubeSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import BenefitsSection from "@/components/sections/BenefitsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
@@ -25,6 +26,7 @@ const Index = () => {
       <ProblemSection />
       <RootCauseSection />
       <ExpertSection />
+      <YouTubeSection />
       <FeaturesSection />
       <BenefitsSection />
       <TestimonialsSection />
