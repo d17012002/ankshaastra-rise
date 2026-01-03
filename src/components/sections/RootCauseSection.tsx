@@ -1,28 +1,32 @@
+import useScrollAnimation from "@/hooks/useScrollAnimation";
+
 const RootCauseSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2E1A47 0%, #0F0E1A 100%)' }}>
+    <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2E1A47 0%, #0F0E1A 100%)' }} ref={ref}>
       {/* Mystic Pattern Overlay */}
       <div className="absolute inset-0 mystic-pattern pointer-events-none" />
       {/* Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 right-20 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+        <div className={`absolute top-10 right-20 w-48 h-48 bg-accent/10 rounded-full blur-3xl transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
+        <div className={`absolute bottom-10 left-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Root Cause Card */}
-          <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-accent/30 gold-glow">
+          <div className={`relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-accent/30 gold-glow transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
             {/* Golden Corner Accents */}
-            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-accent/50 rounded-tl-3xl" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-accent/50 rounded-br-3xl" />
+            <div className={`absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-accent/50 rounded-tl-3xl transition-all duration-500 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-accent/50 rounded-br-3xl transition-all duration-500 delay-400 ${isVisible ? 'opacity-100' : 'opacity-0'}`} />
             
             <div className="text-center">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-accent mb-6">
+              <h2 className={`text-2xl md:text-3xl font-heading font-bold text-accent mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 The Root Cause:
               </h2>
               
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20">
+              <div className={`bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 <p className="text-lg md:text-xl text-white leading-relaxed font-medium">
                   <span className="text-accent font-bold">The Hidden Misalignment:</span>{" "}
                   When your name's vibration conflicts with your date of birth, it creates 

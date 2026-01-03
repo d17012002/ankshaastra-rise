@@ -6,8 +6,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const TestimonialsSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const testimonials = [
     {
       quote: "I have taken all the services offered by Ankshaastra including name correction, mobile number correction ,lucky number lucky colour etc....And I experienced very good, smooth and confident consulting from mr. Himansshu.....I am using all the corrections and hopping for the best results in my life 🤞.....I strongly recommend astrology from Ankshaastra",
@@ -18,7 +21,7 @@ const TestimonialsSection = () => {
       author: "Rajesh Gupta",
     },
     {
-      quote: "I took name correction services from Himansshu Ji and after detailed analysis he corrected my name and suggested my lucky number which I use very frequently and with god’s grace things have changed alot. I got a new job, increment within 6 months of joining and added responsibilities. The premium numerology report had everything one can think of. Highly Recommended. Thank You Ankshaastra",
+      quote: "I took name correction services from Himansshu Ji and after detailed analysis he corrected my name and suggested my lucky number which I use very frequently and with god's grace things have changed alot. I got a new job, increment within 6 months of joining and added responsibilities. The premium numerology report had everything one can think of. Highly Recommended. Thank You Ankshaastra",
       author: "Aman Agarwal",
     },
     {
@@ -36,17 +39,17 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-lg text-ink-black mb-4">
             Trusted by 5000+ Individuals Who Transformed Their Lives
           </h2>
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="max-w-6xl mx-auto">
+        <div className={`max-w-6xl mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Carousel
             opts={{
               align: "start",
@@ -58,10 +61,10 @@ const TestimonialsSection = () => {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <br />
-                  <div className="bg-card rounded-2xl p-8 shadow-card card-hover group relative h-full">
+                  <div className="bg-card rounded-2xl p-8 shadow-card card-hover group relative h-full transition-all duration-300 hover:shadow-card-hover">
                     {/* Quote Icon */}
                     <div className="absolute -top-4 left-8">
-                      <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center shadow-purple">
+                      <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center shadow-purple group-hover:scale-110 transition-transform duration-300">
                         <Quote className="w-5 h-5 text-accent" />
                       </div>
                     </div>
@@ -80,8 +83,8 @@ const TestimonialsSection = () => {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious className="relative static translate-y-0 bg-secondary hover:bg-secondary/80 border-accent/20 text-accent" />
-              <CarouselNext className="relative static translate-y-0 bg-secondary hover:bg-secondary/80 border-accent/20 text-accent" />
+              <CarouselPrevious className="relative static translate-y-0 bg-secondary hover:bg-secondary/80 border-accent/20 text-accent transition-all duration-300 hover:scale-110" />
+              <CarouselNext className="relative static translate-y-0 bg-secondary hover:bg-secondary/80 border-accent/20 text-accent transition-all duration-300 hover:scale-110" />
             </div>
           </Carousel>
         </div>

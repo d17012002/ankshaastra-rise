@@ -1,6 +1,9 @@
 import { Brain, Shield, TrendingUp, Heart, Activity, Star } from "lucide-react";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const BenefitsSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const benefits = [
     {
       icon: Brain,
@@ -35,18 +38,18 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="section-padding relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2E1A47 0%, #0F0E1A 100%)' }}>
+    <section className="section-padding relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2E1A47 0%, #0F0E1A 100%)' }} ref={ref}>
       {/* Mystic Pattern Overlay */}
       <div className="absolute inset-0 mystic-pattern pointer-events-none" />
       {/* Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" />
+        <div className={`absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
+        <div className={`absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-lg text-accent mb-4">
             Benefits of Name Alignment
           </h2>
@@ -60,13 +63,14 @@ const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="glass-card-dark rounded-2xl p-6 card-hover group"
+              className={`glass-card-dark rounded-2xl p-6 card-hover group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${150 + index * 80}ms` }}
             >
-              <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-5 group-hover:bg-accent/30 transition-colors">
+              <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-5 group-hover:bg-accent/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <benefit.icon className="w-6 h-6 text-accent" />
               </div>
               
-              <h3 className="text-xl font-heading font-semibold text-white mb-3 group-hover:text-accent transition-colors">
+              <h3 className="text-xl font-heading font-semibold text-white mb-3 group-hover:text-accent transition-colors duration-300">
                 {benefit.title}
               </h3>
               

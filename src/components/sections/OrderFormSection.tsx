@@ -5,9 +5,11 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Check, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const OrderFormSection = () => {
   const { toast } = useToast();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const [packageType, setPackageType] = useState("single");
   const [promoCode, setPromoCode] = useState("FAMILY");
   const [promoApplied, setPromoApplied] = useState(false);
@@ -57,12 +59,12 @@ const OrderFormSection = () => {
   const originalPrice = packageType === "single" ? 5100 : 15300;
 
   return (
-    <section className="section-padding bg-background" id="order-form">
+    <section className="section-padding bg-background" id="order-form" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Form Column */}
-            <div className="lg:col-span-3">
+            <div className={`lg:col-span-3 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
               <h2 className="heading-lg text-ink-black mb-2">
                 Enter Your Details
               </h2>
@@ -82,7 +84,7 @@ const OrderFormSection = () => {
                     className="grid gap-4"
                   >
                     <label
-                      className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                      className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:shadow-card ${
                         packageType === "single"
                           ? "border-secondary bg-secondary/5"
                           : "border-border hover:border-secondary/50"
@@ -98,7 +100,7 @@ const OrderFormSection = () => {
                     </label>
 
                     <label
-                      className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                      className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:shadow-card ${
                         packageType === "family"
                           ? "border-accent bg-accent/5"
                           : "border-border hover:border-accent/50"
@@ -132,7 +134,7 @@ const OrderFormSection = () => {
                         onChange={handleInputChange}
                         placeholder="Enter your full name"
                         required
-                        className="mt-1.5"
+                        className="mt-1.5 transition-all duration-300 focus:shadow-card"
                       />
                     </div>
                     <div>
@@ -144,14 +146,14 @@ const OrderFormSection = () => {
                         value={formData.person1Dob}
                         onChange={handleInputChange}
                         required
-                        className="mt-1.5"
+                        className="mt-1.5 transition-all duration-300 focus:shadow-card"
                       />
                     </div>
                   </div>
                 ) : (
                   <div className="space-y-6">
                     {/* Person 1 */}
-                    <div className="p-4 bg-muted/50 rounded-xl space-y-4">
+                    <div className="p-4 bg-muted/50 rounded-xl space-y-4 transition-all duration-300 hover:bg-muted/70">
                       <p className="font-semibold text-secondary">Person 1 Details</p>
                       <div>
                         <Label htmlFor="person1Name">Full Name (As per Aadhar Card) *</Label>
@@ -180,7 +182,7 @@ const OrderFormSection = () => {
                     </div>
 
                     {/* Person 2 */}
-                    <div className="p-4 bg-muted/50 rounded-xl space-y-4">
+                    <div className="p-4 bg-muted/50 rounded-xl space-y-4 transition-all duration-300 hover:bg-muted/70">
                       <p className="font-semibold text-secondary">Person 2 Details</p>
                       <div>
                         <Label htmlFor="person2Name">Full Name (As per Aadhar Card) *</Label>
@@ -209,7 +211,7 @@ const OrderFormSection = () => {
                     </div>
 
                     {/* Person 3 */}
-                    <div className="p-4 bg-muted/50 rounded-xl space-y-4">
+                    <div className="p-4 bg-muted/50 rounded-xl space-y-4 transition-all duration-300 hover:bg-muted/70">
                       <p className="font-semibold text-secondary">Person 3 Details</p>
                       <div>
                         <Label htmlFor="person3Name">Full Name (As per Aadhar Card) *</Label>
@@ -252,7 +254,7 @@ const OrderFormSection = () => {
                       onChange={handleInputChange}
                       placeholder="Enter mobile number"
                       required
-                      className="mt-1.5"
+                      className="mt-1.5 transition-all duration-300 focus:shadow-card"
                     />
                   </div>
                   <div>
@@ -265,7 +267,7 @@ const OrderFormSection = () => {
                       onChange={handleInputChange}
                       placeholder="Enter email address"
                       required
-                      className="mt-1.5"
+                      className="mt-1.5 transition-all duration-300 focus:shadow-card"
                     />
                   </div>
                 </div>
@@ -281,12 +283,12 @@ const OrderFormSection = () => {
                         placeholder="Enter promo code"
                         className="flex-1"
                       />
-                      <Button type="button" variant="gold-outline" onClick={applyPromo}>
+                      <Button type="button" variant="gold-outline" onClick={applyPromo} className="transition-all duration-300 hover:scale-105">
                         Apply
                       </Button>
                     </div>
                     {promoApplied && (
-                      <p className="text-green-600 text-sm flex items-center gap-1">
+                      <p className="text-green-600 text-sm flex items-center gap-1 animate-fade-in">
                         <Check className="w-4 h-4" />
                         Family discount applied! You save ₹11,306
                       </p>
@@ -297,8 +299,8 @@ const OrderFormSection = () => {
             </div>
 
             {/* Order Summary */}
-            <div className="lg:col-span-2">
-              <div className="bg-card rounded-2xl p-6 shadow-card sticky top-24 border border-border">
+            <div className={`lg:col-span-2 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
+              <div className="bg-card rounded-2xl p-6 shadow-card sticky top-24 border border-border transition-all duration-300 hover:shadow-card-hover">
                 <h3 className="text-xl font-heading font-bold text-ink-black mb-6">
                   Order Summary
                 </h3>
@@ -344,10 +346,10 @@ const OrderFormSection = () => {
                 <Button
                   variant="hero"
                   size="lg"
-                  className="w-full mt-6"
+                  className="w-full mt-6 group"
                   onClick={handleSubmit}
                 >
-                  Proceed to Secure Payment
+                  <span className="group-hover:scale-105 transition-transform duration-300 inline-block">Proceed to Secure Payment</span>
                 </Button>
 
                 <div className="mt-4 text-center">

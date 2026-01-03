@@ -1,16 +1,18 @@
-import { Sparkles } from "lucide-react";
 import expertPhoto from "@/assets/himansshu.jpeg";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const ExpertSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
           {/* Photo Column - First on Desktop */}
-          <div className="order-2 lg:order-1">
-            <div className="relative">
+          <div className={`order-2 lg:order-1 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
+            <div className="relative group">
               {/* Photo Container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-purple group">
+              <div className="relative rounded-3xl overflow-hidden shadow-purple">
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                 
@@ -18,7 +20,7 @@ const ExpertSection = () => {
                 <img 
                   src={expertPhoto} 
                   alt="Himansshu Agarwal - Numerology Expert"
-                  className="w-full aspect-[4/5] object-cover object-top"
+                  className="w-full aspect-[4/5] object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
                 
                 {/* Decorative Border */}
@@ -26,14 +28,14 @@ const ExpertSection = () => {
               </div>
               
               {/* Floating Badge */}
-              <div className="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-2xl shadow-gold font-semibold text-sm">
+              <div className={`absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-2xl shadow-gold font-semibold text-sm transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 5000+ Reports Delivered
               </div>
             </div>
           </div>
 
           {/* Text Column - Second on Desktop */}
-          <div className="order-1 lg:order-2">
+          <div className={`order-1 lg:order-2 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
             <h2 className="heading-lg text-ink-black mb-4">
               Who is Himansshu Agarwal
             </h2>
