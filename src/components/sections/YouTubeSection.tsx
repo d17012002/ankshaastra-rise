@@ -6,21 +6,21 @@ const YouTubeSection = () => {
 
   const videos = [
     {
-      id: "VIDEO_ID_1",
-      title: "Name Correction Success Stories"
+      id: "yF9ufbKJYcs",
+      title: "The Truth About Numerology: Myths, Facts & Hidden Secrets"
     },
     {
-      id: "VIDEO_ID_2", 
-      title: "How Numerology Works"
+      id: "1ilCeIyAVsI", 
+      title: "Dhoni vs Kohli का Numerology सच!"
     },
     {
-      id: "VIDEO_ID_3",
-      title: "Understanding Your Mulank & Bhagyank"
+      id: "WB17QfVWPlE",
+      title: "2026 में World War 3 या पैसों की बारिश?"
     }
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2E1A47 0%, #0F0E1A 100%)' }} ref={ref}>
+    <section className="py-16 md:py-26 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2E1A47 0%, #0F0E1A 100%)' }} ref={ref}>
       {/* Mystic Pattern Overlay */}
       <div className="absolute inset-0 mystic-pattern pointer-events-none" />
       
@@ -34,15 +34,11 @@ const YouTubeSection = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full border border-accent/30 mb-6">
-              <Play className="w-4 h-4 text-accent" />
-              <span className="text-accent text-sm font-medium">Watch & Learn</span>
-            </div>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-accent mb-4">
-              Explore Our Videos
+              Insightful Podcast's
             </h2>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Discover the power of numerology and name correction through our insightful videos
+              Learn how numerology and name correction can influence your life through insightful podcasts.
             </p>
           </div>
 
@@ -59,7 +55,7 @@ const YouTubeSection = () => {
                 <div className={`absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-accent/50 rounded-br-2xl transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: `${400 + index * 100}ms` }} />
                 
                 {/* Video Embed */}
-                <div className="aspect-video rounded-xl overflow-hidden bg-black/50 mb-4">
+                <div className="aspect-video rounded-l overflow-hidden bg-black/50 mb-2">
                   <iframe
                     src={`https://www.youtube.com/embed/${video.id}`}
                     title={video.title}
@@ -68,11 +64,6 @@ const YouTubeSection = () => {
                     allowFullScreen
                   />
                 </div>
-                
-                {/* Video Title */}
-                <h3 className="text-white font-semibold text-center group-hover:text-accent transition-colors duration-300">
-                  {video.title}
-                </h3>
               </div>
             ))}
           </div>

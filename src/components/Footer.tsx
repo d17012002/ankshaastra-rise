@@ -1,8 +1,18 @@
-import { Sparkles, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import privacyPolicy from "@/assets/PrivacyPolicy.pdf";
 import refundPolicy from "@/assets/RefundPolicy.pdf";
 import shippingPolicy from "@/assets/ShippingPolicy.pdf";
 import logo from "@/assets/logo.png";
+import {
+  FaYoutube,
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaPinterestP,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
+
 
 const Footer = () => {
   return (
@@ -17,6 +27,69 @@ const Footer = () => {
                 alt="Ankshaastra Logo"
                 className="h-12 w-auto object-contain"
               />
+          </div>
+
+          {/* Social Media Icons */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <a
+              href="https://www.youtube.com/@Ankshaastra"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              className="text-white/60 hover:text-red-500 transition-colors"
+            >
+              <FaYoutube className="w-5 h-5" />
+            </a>
+
+            <a
+              href="https://www.instagram.com/ankshaastra?igsh=MXJjdDFvNTJrdzZyYQ%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-white/60 hover:text-pink-500 transition-colors"
+            >
+              <FaInstagram className="w-5 h-5" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=61561549995939#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="text-white/60 hover:text-blue-500 transition-colors"
+            >
+              <FaFacebookF className="w-5 h-5" />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/company/104817997/admin/dashboard/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-white/60 hover:text-blue-400 transition-colors"
+            >
+              <FaLinkedinIn className="w-5 h-5" />
+            </a>
+
+            <a
+              href="https://x.com/ankshaastra?s=11"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X"
+              className="text-white/60 hover:text-white transition-colors"
+            >
+              <FaXTwitter className="w-5 h-5" />
+            </a>
+
+            <a
+              href="https://pin.it/7xB0bMR12"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Pinterest"
+              className="text-white/60 hover:text-red-400 transition-colors"
+            >
+              <FaPinterestP className="w-5 h-5" />
+            </a>
           </div>
 
           {/* Contact */}

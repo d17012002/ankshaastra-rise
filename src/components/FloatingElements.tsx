@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { MessageCircle, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const FloatingElements = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -17,7 +18,7 @@ const FloatingElements = () => {
   };
 
   const openWhatsApp = () => {
-    window.open("https://wa.me//+919667305577", "_blank");
+    window.open("https://wa.me/919667305577", "_blank");
   };
 
   return (
@@ -25,10 +26,10 @@ const FloatingElements = () => {
       {/* WhatsApp Button */}
       <button
         onClick={openWhatsApp}
-        className="fixed bottom-6 right-6 z-50 bg-secondary text-white p-4 rounded-full shadow-purple transition-all duration-300 hover:scale-110 hover:shadow-2xl group"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-purple transition-all duration-300 hover:scale-110 hover:shadow-2xl group"
         aria-label="Contact on WhatsApp"
       >
-        <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
+        <FaWhatsapp className="w-6 h-6" />
       </button>
 
       {/* Back to Top Button */}
