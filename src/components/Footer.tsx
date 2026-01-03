@@ -1,5 +1,8 @@
 import { Sparkles, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import privacyPolicy from "@/assets/PrivacyPolicy.pdf";
+import refundPolicy from "@/assets/RefundPolicy.pdf";
+import shippingPolicy from "@/assets/ShippingPolicy.pdf";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,10 +11,12 @@ const Footer = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo */}
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-6 h-6 text-accent" />
-            <span className="text-2xl font-heading font-bold text-white">
-              Ankshaastra
-            </span>
+            {/* Logo */}
+            <img 
+                src={logo} 
+                alt="Ankshaastra Logo"
+                className="h-12 w-auto object-contain"
+              />
           </div>
 
           {/* Contact */}
@@ -22,24 +27,27 @@ const Footer = () => {
 
           {/* Policy Links */}
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-8">
-            <Link 
-              to="/privacy-policy" 
+            <a 
+              href={privacyPolicy}
+              download
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Privacy Policy
-            </Link>
-            <Link 
-              to="/refund-policy" 
+            </a>
+            <a 
+              href={refundPolicy} 
+              download
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Refund Policy
-            </Link>
-            <Link 
-              to="/shipping-policy" 
+            </a>
+            <a 
+              href={shippingPolicy}
+              download
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Shipping Policy
-            </Link>
+            </a>
           </div>
 
           {/* Disclaimer */}
@@ -51,7 +59,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-white/40 text-sm">
-            © 2025 Ankshaastra. All rights reserved.
+            © 2026 Ankshaastra. All rights reserved.
           </p>
         </div>
       </div>

@@ -17,7 +17,7 @@ const FloatingElements = () => {
   };
 
   const openWhatsApp = () => {
-    window.open("https://wa.me/919667305577", "_blank");
+    window.open("https://wa.me//+919667305577", "_blank");
   };
 
   return (

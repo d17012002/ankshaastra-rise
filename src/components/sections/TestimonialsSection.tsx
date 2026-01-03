@@ -10,24 +10,28 @@ import {
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      quote: "Within 3 months of name correction, I got promoted and my business revenue doubled.",
-      author: "Priya S.",
+      quote: "I have taken all the services offered by Ankshaastra including name correction, mobile number correction ,lucky number lucky colour etc....And I experienced very good, smooth and confident consulting from mr. Himansshu.....I am using all the corrections and hopping for the best results in my life 🤞.....I strongly recommend astrology from Ankshaastra",
+      author: "Kalpitt Joshii",
     },
     {
-      quote: "The mental clarity was instant. I finally feel aligned with my purpose.",
-      author: "Amit K.",
+      quote: "I took name correction services for my kids & wife from Himansshu. Firstly I was dicy as no result was coming but after taking 4 consultations from him post name correction, the result was visible. The consultation and name correction helped me deciding the career for my kids and now I can say they are doing very well. Highly Recommended.",
+      author: "Rajesh Gupta",
     },
     {
-      quote: "Skeptical at first, but the results speak for themselves.",
-      author: "Rajesh M.",
+      quote: "I took name correction services from Himansshu Ji and after detailed analysis he corrected my name and suggested my lucky number which I use very frequently and with god’s grace things have changed alot. I got a new job, increment within 6 months of joining and added responsibilities. The premium numerology report had everything one can think of. Highly Recommended. Thank You Ankshaastra",
+      author: "Aman Agarwal",
     },
     {
-      quote: "My business relationships improved dramatically after the name alignment.",
-      author: "Sunita R.",
+      quote: "I took name correction services from Himansshu sir and later premium numerology report, and it has helped me alott to find out my strengths, weaknesses, career options, lucky color, number, personalised remedies and much more and the best part is the report is himself explained by Himansshu sir. Highly recommended. Thanks to Ankshaastra.",
+      author: "Lalit Narayan",
     },
     {
-      quote: "I was amazed at how quickly things started falling into place after the correction.",
-      author: "Vikram P.",
+      quote: "I took name correction and premium numerology report from Himansshu Ji & it has helped me a lot. I was too worried and went to many astrologers but the remedy which ankshaastra gave helped me. They suggested me a mantra chanting and Rudraksha. Initially I was skeptical but jab result aane shuru hue to mujhe yakeen hua. Highly recommended",
+      author: "Akash Singh",
+    },
+    {
+      quote: "I took name correction services for my kids & wife from Himansshu. Firstly I was dicy as no result was coming but after taking 4 consultations from him post name correction, the result was visible. The consultation and name correction helped me deciding the career for my kids and now I can say they are doing very well. Highly Recommended.",
+      author: "Biswajit Mishra",
     },
   ];
 
@@ -53,6 +57,7 @@ const TestimonialsSection = () => {
             <CarouselContent className="-ml-4">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <br />
                   <div className="bg-card rounded-2xl p-8 shadow-card card-hover group relative h-full">
                     {/* Quote Icon */}
                     <div className="absolute -top-4 left-8">

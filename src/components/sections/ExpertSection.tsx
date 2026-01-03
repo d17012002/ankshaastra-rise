@@ -1,5 +1,5 @@
 import { Sparkles } from "lucide-react";
-import expertPhoto from "@/assets/himansshu-agarwal.jpg";
+import expertPhoto from "@/assets/himansshu.jpeg";
 
 const ExpertSection = () => {
   return (
@@ -39,10 +39,7 @@ const ExpertSection = () => {
             </h2>
             
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-accent" />
-              <p className="text-lg font-medium text-ink-black">
-                The Right Name Can Change Everything
-              </p>
+              <br />
             </div>
             
             <p className="text-accent font-semibold text-lg mb-6">

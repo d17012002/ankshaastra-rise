@@ -120,7 +120,7 @@ const PricingSection = () => {
             {/* Price */}
             <div className="mb-4">
               <div className="flex items-baseline gap-3">
-                <span className="text-lg text-muted-foreground line-through">₹5,991</span>
+                <span className="text-lg text-muted-foreground line-through">₹15,300</span>
                 <span className="text-4xl font-heading font-bold text-accent">₹3,994</span>
               </div>
               <span className="inline-block mt-2 bg-green-100 text-green-700 text-sm font-semibold px-3 py-1 rounded-full">

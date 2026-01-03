@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,14 +33,11 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="relative">
-            <Sparkles className="w-6 h-6 text-accent animate-pulse-glow" />
-          </div>
-          <span className="text-xl md:text-2xl font-heading font-bold text-white">
-            Ankshaastra
-          </span>
-        </a>
+        <img 
+            src={logo} 
+            alt="Ankshaastra Logo"
+            className="h-12 w-auto object-contain"
+          />
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
