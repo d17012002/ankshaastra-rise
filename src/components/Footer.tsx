@@ -1,4 +1,5 @@
 import { Sparkles, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -17,6 +18,28 @@ const Footer = () => {
           <div className="flex items-center justify-center gap-2 text-accent mb-8">
             <Phone className="w-5 h-5" />
             <span className="text-lg font-medium">For Queries: 9667305577</span>
+          </div>
+
+          {/* Policy Links */}
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-8">
+            <Link 
+              to="/privacy-policy" 
+              className="text-white/70 hover:text-accent transition-colors text-sm"
+            >
+              Privacy Policy
+            </Link>
+            <Link 
+              to="/refund-policy" 
+              className="text-white/70 hover:text-accent transition-colors text-sm"
+            >
+              Refund Policy
+            </Link>
+            <Link 
+              to="/shipping-policy" 
+              className="text-white/70 hover:text-accent transition-colors text-sm"
+            >
+              Shipping Policy
+            </Link>
           </div>
 
           {/* Disclaimer */}
