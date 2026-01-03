@@ -56,7 +56,7 @@ const OrderFormSection = () => {
   };
 
   const price = packageType === "single" ? 1997 : 3994;
-  const originalPrice = packageType === "single" ? 5100 : 15300;
+  const originalPrice = packageType === "single" ? 5100 : 10200;
 
   return (
     <section className="section-padding bg-background" id="order-form" ref={ref}>
@@ -290,7 +290,7 @@ const OrderFormSection = () => {
                     {promoApplied && (
                       <p className="text-green-600 text-sm flex items-center gap-1 animate-fade-in">
                         <Check className="w-4 h-4" />
-                        Family discount applied! You save ₹11,306
+                        Family discount applied! You save ₹6,206
                       </p>
                     )}
                   </div>
@@ -322,7 +322,7 @@ const OrderFormSection = () => {
                       </div>
                       <div className="flex justify-between text-green-600">
                         <span>Discount</span>
-                        <span>-₹11,306</span>
+                        <span>-₹6,206</span>
                       </div>
                     </>
                   )}
