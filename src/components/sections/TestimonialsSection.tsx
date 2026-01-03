@@ -1,4 +1,11 @@
 import { Quote } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -14,6 +21,14 @@ const TestimonialsSection = () => {
       quote: "Skeptical at first, but the results speak for themselves.",
       author: "Rajesh M.",
     },
+    {
+      quote: "My business relationships improved dramatically after the name alignment.",
+      author: "Sunita R.",
+    },
+    {
+      quote: "I was amazed at how quickly things started falling into place after the correction.",
+      author: "Vikram P.",
+    },
   ];
 
   return (
@@ -26,31 +41,44 @@ const TestimonialsSection = () => {
           </h2>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-2xl p-8 shadow-card card-hover group relative"
-            >
-              {/* Quote Icon */}
-              <div className="absolute -top-4 left-8">
-                <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center shadow-purple">
-                  <Quote className="w-5 h-5 text-accent" />
-                </div>
-              </div>
-              
-              <div className="pt-4">
-                <p className="text-lg text-ink-black leading-relaxed mb-6 italic">
-                  "{testimonial.quote}"
-                </p>
-                
-                <p className="text-accent font-semibold">
-                  — {testimonial.author}
-                </p>
-              </div>
+        {/* Testimonials Carousel */}
+        <div className="max-w-6xl mx-auto">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-card rounded-2xl p-8 shadow-card card-hover group relative h-full">
+                    {/* Quote Icon */}
+                    <div className="absolute -top-4 left-8">
+                      <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center shadow-purple">
+                        <Quote className="w-5 h-5 text-accent" />
+                      </div>
+                    </div>
+                    
+                    <div className="pt-4">
+                      <p className="text-lg text-ink-black leading-relaxed mb-6 italic">
+                        "{testimonial.quote}"
+                      </p>
+                      
+                      <p className="text-accent font-semibold">
+                        — {testimonial.author}
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-8">
+              <CarouselPrevious className="relative static translate-y-0 bg-secondary hover:bg-secondary/80 border-accent/20 text-accent" />
+              <CarouselNext className="relative static translate-y-0 bg-secondary hover:bg-secondary/80 border-accent/20 text-accent" />
             </div>
-          ))}
+          </Carousel>
         </div>
       </div>
     </section>
