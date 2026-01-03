@@ -4,8 +4,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const FAQSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const faqs = [
     {
       question: "How long does it take to see results?",
@@ -35,25 +38,25 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-lg text-ink-black">
             Frequently Asked Questions
           </h2>
         </div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto">
+        <div className={`max-w-3xl mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card rounded-2xl px-6 shadow-card border-none"
+                className="bg-card rounded-2xl px-6 shadow-card border-none transition-all duration-300 hover:shadow-card-hover"
               >
-                <AccordionTrigger className="text-left text-lg font-semibold text-ink-black hover:text-secondary py-6 hover:no-underline">
+                <AccordionTrigger className="text-left text-lg font-semibold text-ink-black hover:text-secondary py-6 hover:no-underline transition-colors duration-300">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-6">

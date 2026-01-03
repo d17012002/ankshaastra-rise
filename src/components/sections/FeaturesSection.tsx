@@ -1,6 +1,9 @@
 import { Calculator, FileSearch, Lightbulb, Map } from "lucide-react";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const FeaturesSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const features = [
     {
       icon: Calculator,
@@ -25,10 +28,10 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-card/50">
+    <section className="section-padding bg-card/50" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-lg text-ink-black mb-4">
             What Your Report Includes
           </h2>
@@ -42,13 +45,14 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-card rounded-2xl p-8 shadow-card card-hover card-hover-gold group"
+              className={`bg-card rounded-2xl p-8 shadow-card card-hover card-hover-gold group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${150 + index * 100}ms` }}
             >
-              <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+              <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                 <feature.icon className="w-7 h-7 text-accent" />
               </div>
               
-              <h3 className="heading-sm text-ink-black mb-4 group-hover:text-secondary transition-colors">
+              <h3 className="heading-sm text-ink-black mb-4 group-hover:text-secondary transition-colors duration-300">
                 {feature.title}
               </h3>
               

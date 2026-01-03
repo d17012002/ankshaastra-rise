@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Check, Clock, Lock, Sparkles } from "lucide-react";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const PricingSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const scrollToForm = () => {
     const formSection = document.getElementById("order-form");
     if (formSection) {
@@ -31,10 +34,10 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-card/50" id="pricing">
+    <section className="section-padding bg-card/50" id="pricing" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-lg text-ink-black mb-4">
             Get Your Personalized Report
           </h2>
@@ -46,7 +49,7 @@ const PricingSection = () => {
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Single Report Card */}
-          <div className="bg-card rounded-3xl p-8 shadow-card card-hover relative">
+          <div className={`bg-card rounded-3xl p-8 shadow-card card-hover relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '150ms' }}>
             <div className="mb-6">
               <h3 className="text-2xl font-heading font-bold text-ink-black mb-2">
                 Name Correction Blueprint
@@ -70,16 +73,16 @@ const PricingSection = () => {
             {/* Features */}
             <ul className="space-y-3 mb-8">
               {singleFeatures.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <li key={index} className="flex items-start gap-3 group">
+                  <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
                   <span className="text-muted-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
 
             {/* CTA */}
-            <Button variant="gold" size="lg" className="w-full" onClick={scrollToForm}>
-              Get Single Report
+            <Button variant="gold" size="lg" className="w-full group" onClick={scrollToForm}>
+              <span className="group-hover:scale-105 transition-transform duration-300 inline-block">Get Single Report</span>
             </Button>
 
             {/* Trust Badges */}
@@ -94,9 +97,9 @@ const PricingSection = () => {
           </div>
 
           {/* Family Package Card */}
-          <div className="bg-card rounded-3xl p-8 shadow-card card-hover relative border-2 border-accent gold-glow">
+          <div className={`bg-card rounded-3xl p-8 shadow-card card-hover relative border-2 border-accent gold-glow transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '250ms' }}>
             {/* Best Value Badge */}
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <div className={`absolute -top-4 left-1/2 -translate-x-1/2 transition-all duration-500 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
               <span className="bg-accent text-accent-foreground text-sm font-bold px-4 py-2 rounded-full shadow-gold">
                 BEST VALUE
               </span>
@@ -138,16 +141,16 @@ const PricingSection = () => {
             {/* Features */}
             <ul className="space-y-3 mb-8">
               {familyFeatures.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <li key={index} className="flex items-start gap-3 group">
+                  <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
                   <span className="text-muted-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
 
             {/* CTA */}
-            <Button variant="hero" size="lg" className="w-full" onClick={scrollToForm}>
-              Get Family Package
+            <Button variant="hero" size="lg" className="w-full group" onClick={scrollToForm}>
+              <span className="group-hover:scale-105 transition-transform duration-300 inline-block">Get Family Package</span>
             </Button>
 
             {/* Trust Badges */}
