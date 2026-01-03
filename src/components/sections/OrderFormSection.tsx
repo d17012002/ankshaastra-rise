@@ -1,0 +1,367 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Check, Sparkles } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
+const OrderFormSection = () => {
+  const { toast } = useToast();
+  const [packageType, setPackageType] = useState("single");
+  const [promoCode, setPromoCode] = useState("FAMILY");
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [formData, setFormData] = useState({
+    person1Name: "",
+    person1Dob: "",
+    person2Name: "",
+    person2Dob: "",
+    person3Name: "",
+    person3Dob: "",
+    mobile: "",
+    email: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const applyPromo = () => {
+    if (promoCode.toUpperCase() === "FAMILY") {
+      setPromoApplied(true);
+      toast({
+        title: "Promo Applied!",
+        description: "Family discount applied! You save ₹1,997",
+      });
+    } else {
+      toast({
+        title: "Invalid Code",
+        description: "Please enter a valid promo code.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Processing...",
+      description: "Redirecting to secure payment...",
+    });
+  };
+
+  const price = packageType === "single" ? 1997 : 3994;
+  const originalPrice = packageType === "single" ? 5100 : 5991;
+
+  return (
+    <section className="section-padding bg-background" id="order-form">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+            {/* Form Column */}
+            <div className="lg:col-span-3">
+              <h2 className="heading-lg text-ink-black mb-2">
+                Enter Your Details
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                We will use this information to create your personalized report
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Package Selection */}
+                <div className="space-y-4">
+                  <Label className="text-lg font-semibold text-ink-black">
+                    Select Package
+                  </Label>
+                  <RadioGroup
+                    value={packageType}
+                    onValueChange={setPackageType}
+                    className="grid gap-4"
+                  >
+                    <label
+                      className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                        packageType === "single"
+                          ? "border-secondary bg-secondary/5"
+                          : "border-border hover:border-secondary/50"
+                      }`}
+                    >
+                      <RadioGroupItem value="single" id="single" />
+                      <div className="flex-1">
+                        <span className="font-semibold text-ink-black">
+                          Single Report
+                        </span>
+                        <span className="text-accent font-bold ml-2">₹1,997</span>
+                      </div>
+                    </label>
+
+                    <label
+                      className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                        packageType === "family"
+                          ? "border-accent bg-accent/5"
+                          : "border-border hover:border-accent/50"
+                      }`}
+                    >
+                      <RadioGroupItem value="family" id="family" />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold text-ink-black">
+                            Family Package (3 Reports)
+                          </span>
+                          <span className="bg-accent text-accent-foreground text-xs font-bold px-2 py-0.5 rounded-full">
+                            BEST VALUE
+                          </span>
+                        </div>
+                        <span className="text-accent font-bold">₹3,994</span>
+                      </div>
+                    </label>
+                  </RadioGroup>
+                </div>
+
+                {/* Form Fields */}
+                {packageType === "single" ? (
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="person1Name">Full Name (As per Aadhar Card) *</Label>
+                      <Input
+                        id="person1Name"
+                        name="person1Name"
+                        value={formData.person1Name}
+                        onChange={handleInputChange}
+                        placeholder="Enter your full name"
+                        required
+                        className="mt-1.5"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="person1Dob">Date of Birth (DD/MM/YYYY) *</Label>
+                      <Input
+                        id="person1Dob"
+                        name="person1Dob"
+                        type="date"
+                        value={formData.person1Dob}
+                        onChange={handleInputChange}
+                        required
+                        className="mt-1.5"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {/* Person 1 */}
+                    <div className="p-4 bg-muted/50 rounded-xl space-y-4">
+                      <p className="font-semibold text-secondary">Person 1 Details</p>
+                      <div>
+                        <Label htmlFor="person1Name">Full Name (As per Aadhar Card) *</Label>
+                        <Input
+                          id="person1Name"
+                          name="person1Name"
+                          value={formData.person1Name}
+                          onChange={handleInputChange}
+                          placeholder="Enter full name"
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="person1Dob">Date of Birth *</Label>
+                        <Input
+                          id="person1Dob"
+                          name="person1Dob"
+                          type="date"
+                          value={formData.person1Dob}
+                          onChange={handleInputChange}
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Person 2 */}
+                    <div className="p-4 bg-muted/50 rounded-xl space-y-4">
+                      <p className="font-semibold text-secondary">Person 2 Details</p>
+                      <div>
+                        <Label htmlFor="person2Name">Full Name (As per Aadhar Card) *</Label>
+                        <Input
+                          id="person2Name"
+                          name="person2Name"
+                          value={formData.person2Name}
+                          onChange={handleInputChange}
+                          placeholder="Enter full name"
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="person2Dob">Date of Birth *</Label>
+                        <Input
+                          id="person2Dob"
+                          name="person2Dob"
+                          type="date"
+                          value={formData.person2Dob}
+                          onChange={handleInputChange}
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Person 3 */}
+                    <div className="p-4 bg-muted/50 rounded-xl space-y-4">
+                      <p className="font-semibold text-secondary">Person 3 Details</p>
+                      <div>
+                        <Label htmlFor="person3Name">Full Name (As per Aadhar Card) *</Label>
+                        <Input
+                          id="person3Name"
+                          name="person3Name"
+                          value={formData.person3Name}
+                          onChange={handleInputChange}
+                          placeholder="Enter full name"
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="person3Dob">Date of Birth *</Label>
+                        <Input
+                          id="person3Dob"
+                          name="person3Dob"
+                          type="date"
+                          value={formData.person3Dob}
+                          onChange={handleInputChange}
+                          required
+                          className="mt-1.5"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Contact Details */}
+                <div className="space-y-4 pt-2">
+                  <p className="font-semibold text-ink-black">Contact Details</p>
+                  <div>
+                    <Label htmlFor="mobile">Mobile Number *</Label>
+                    <Input
+                      id="mobile"
+                      name="mobile"
+                      type="tel"
+                      value={formData.mobile}
+                      onChange={handleInputChange}
+                      placeholder="Enter mobile number"
+                      required
+                      className="mt-1.5"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="email">Email ID *</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Enter email address"
+                      required
+                      className="mt-1.5"
+                    />
+                  </div>
+                </div>
+
+                {/* Promo Code (Family Package) */}
+                {packageType === "family" && (
+                  <div className="space-y-2">
+                    <Label>Promo Code</Label>
+                    <div className="flex gap-2">
+                      <Input
+                        value={promoCode}
+                        onChange={(e) => setPromoCode(e.target.value)}
+                        placeholder="Enter promo code"
+                        className="flex-1"
+                      />
+                      <Button type="button" variant="gold-outline" onClick={applyPromo}>
+                        Apply
+                      </Button>
+                    </div>
+                    {promoApplied && (
+                      <p className="text-green-600 text-sm flex items-center gap-1">
+                        <Check className="w-4 h-4" />
+                        Family discount applied! You save ₹1,997
+                      </p>
+                    )}
+                  </div>
+                )}
+              </form>
+            </div>
+
+            {/* Order Summary */}
+            <div className="lg:col-span-2">
+              <div className="bg-card rounded-2xl p-6 shadow-card sticky top-24 border border-border">
+                <h3 className="text-xl font-heading font-bold text-ink-black mb-6">
+                  Order Summary
+                </h3>
+
+                <div className="space-y-4 pb-6 border-b border-border">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      {packageType === "single"
+                        ? "Name Alignment Blueprint"
+                        : "Family Package - 3 Reports"}
+                    </span>
+                  </div>
+
+                  {packageType === "family" && (
+                    <>
+                      <div className="flex justify-between text-muted-foreground">
+                        <span>Original Price</span>
+                        <span className="line-through">₹{originalPrice.toLocaleString()}</span>
+                      </div>
+                      <div className="flex justify-between text-green-600">
+                        <span>Discount</span>
+                        <span>-₹1,997</span>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                <div className="py-6 border-b border-border">
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg font-semibold text-ink-black">Total</span>
+                    <span className="text-3xl font-heading font-bold text-accent">
+                      ₹{price.toLocaleString()}
+                    </span>
+                  </div>
+                  {packageType === "family" && promoApplied && (
+                    <p className="text-sm text-muted-foreground mt-2 flex items-center gap-1">
+                      <Sparkles className="w-4 h-4 text-accent" />
+                      Promo code 'FAMILY' applied ✨
+                    </p>
+                  )}
+                </div>
+
+                <Button
+                  variant="hero"
+                  size="lg"
+                  className="w-full mt-6"
+                  onClick={handleSubmit}
+                >
+                  Proceed to Secure Payment
+                </Button>
+
+                <div className="mt-4 text-center">
+                  <p className="text-xs text-muted-foreground">
+                    🔒 Your payment is 100% secure and encrypted
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default OrderFormSection;
