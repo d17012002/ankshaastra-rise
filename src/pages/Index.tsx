@@ -1,13 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/Header";
+import ScrollProgress from "@/components/ScrollProgress";
+import FloatingElements from "@/components/FloatingElements";
+import HeroSection from "@/components/sections/HeroSection";
+import ProblemSection from "@/components/sections/ProblemSection";
+import RootCauseSection from "@/components/sections/RootCauseSection";
+import ExpertSection from "@/components/sections/ExpertSection";
+import FeaturesSection from "@/components/sections/FeaturesSection";
+import BenefitsSection from "@/components/sections/BenefitsSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import PricingSection from "@/components/sections/PricingSection";
+import OrderFormSection from "@/components/sections/OrderFormSection";
+import TrustSection from "@/components/sections/TrustSection";
+import FAQSection from "@/components/sections/FAQSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <ScrollProgress />
+      <Header />
+      <FloatingElements />
+      
+      <HeroSection />
+      <ProblemSection />
+      <RootCauseSection />
+      <ExpertSection />
+      <FeaturesSection />
+      <BenefitsSection />
+      <TestimonialsSection />
+      <PricingSection />
+      <OrderFormSection />
+      <TrustSection />
+      <FAQSection />
+      <Footer />
+    </main>
   );
 };
 
