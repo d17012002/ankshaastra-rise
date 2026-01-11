@@ -102,21 +102,24 @@ const Footer = () => {
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-8">
             <a 
               href={privacyPolicy}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Privacy Policy
             </a>
             <a 
               href={refundPolicy} 
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Refund Policy
             </a>
             <a 
               href={shippingPolicy}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Shipping Policy

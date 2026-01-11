@@ -19,11 +19,15 @@ const TrustSection = () => {
     },
     {
       icon: PenTool,
-      text: "100% Hand-Crafted Report – No software, no automation, no AI-generated reports",
+      text: "No Software-Generated Reports – Every report is 100% hand-crafted with no automation or AI",
     },
     {
       icon: User,
       text: "Personally Prepared – Each report is analyzed and created by Himansshu Ji himself",
+    },
+    {
+      icon: ShieldCheck,
+      text: "No Fear Tactics – Honest, empowering guidance without manipulation or scare tactics",
     },
   ];
 
