@@ -1,7 +1,5 @@
 import { Phone } from "lucide-react";
-import privacyPolicy from "@/assets/PrivacyPolicy.pdf";
-import refundPolicy from "@/assets/RefundPolicy.pdf";
-import shippingPolicy from "@/assets/ShippingPolicy.pdf";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import {
   FaYoutube,
@@ -100,30 +98,24 @@ const Footer = () => {
 
           {/* Policy Links */}
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-8">
-            <a 
-              href={privacyPolicy}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link 
+              to="/privacy-policy"
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Privacy Policy
-            </a>
-            <a 
-              href={refundPolicy} 
-              target="_blank"
-              rel="noopener noreferrer"
+            </Link>
+            <Link 
+              to="/refund-policy"
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Refund Policy
-            </a>
-            <a 
-              href={shippingPolicy}
-              target="_blank"
-              rel="noopener noreferrer"
+            </Link>
+            <Link 
+              to="/shipping-policy"
               className="text-white/70 hover:text-accent transition-colors text-sm"
             >
               Shipping Policy
-            </a>
+            </Link>
           </div>
 
           {/* Disclaimer */}
